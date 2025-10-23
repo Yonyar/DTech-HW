@@ -3,7 +3,7 @@ This repository breaks down a complete home automation project into four stages:
 
 - [**Hardware**](https://github.com/Yonyar/DTech-HW/tree/main/Hardware): Steps to build a compact PCB designed for IoT / Home automation applications
 - [**ESP32**](https://github.com/Yonyar/DTech-HW/tree/main/ESP32): ESP32 Microcontroller programing using MQTT protocol
-- [**RaspberryPi**](): working as a Hub (MQTT Broker)
+- [**RaspberryPi**](https://github.com/Yonyar/DTech-HW/tree/main/RaspberryPi): working as a MQTT Broker
 - [**App**](https://github.com/Yonyar/DTech-HW/tree/main/App): Progressive web applications to interacts with hardware side
 
 ## Scope

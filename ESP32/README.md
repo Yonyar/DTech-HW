@@ -117,7 +117,7 @@ wifiManager.addParameter(&custom_mqtt_server);
 > mqtt_server will contain your broker's IP address for using MQTT protocol
 
 ### PubSubClient
-It's really easy to use MQTT with this library.  
+It's really easy to use MQTT with this [**library**](https://github.com/knolleary/pubsubclient).  
 We can publish messages to different *topics* and also subscribe to them, which allows us to "listen" only messages relevant to our device.
 
 Here's how I imagine it:   
@@ -130,9 +130,9 @@ We can do the same for a "Devices/disconnected" topic.
 For a light device, we might have a main active topic: "Devices/Lights/device_id".   
 Our device will listen here!  
 We could also define sub-topics, each handled differently:
-- */OnOff -> expects the strings "on" or "off"
-- */Brightness -> expects a string between "0" and "100"
-- */RGB -> expects a string with a hex RGB code 
+- */state -> expects the string "trigger" to toggle the state (On/Off)
+- */brightness -> expects a string between "0" and "100"
+- */rgb -> expects a string with a hex RGB code 
 
 > ⚠️ Only string messages can be sent, but possibilities are endless.
 
