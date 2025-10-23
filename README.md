@@ -5,6 +5,7 @@ A compact PCB designed for IoT / Home automation applications
 This repository belongs to a serie called **DTech** (Domotic Tech) which breaks down a complete home automation project into three stages: Hardware, Microcontroller and App.
 
 The sole objective of this serie is the satisfaction of transforming creative ideas into functional prototypes through problem-solving and self-learning.
+I'm not any expert to give you unquestionable advice, I can only share my experience along the way.
 > ✨ If you are passionate about this idea like I am, feel free to use this project as a reference to improve it and carry out your own creations!
 
 It's convenience start with **DTech-ESP32** in order to test our PCB with neccesary ~magic~ logic.  
@@ -50,7 +51,7 @@ Let's split the propposed scheme by parts.
    Datasheet component have all specs and also have some examples as circuit with capacitor values to improve DC signal. Of course we should take it into account if necessary.
    
    However, we can anticipate an issue...  
-   > ⚠️ What? Inputs and Output pins of ESP32 work at 3.3V, not 5V!
+   > ⚠️ What? To get low energy compsuption we should supply our HW at 3.3V. Inputs and Output pins of ESP32 work at 3.3V, not 5V, so it's enough!
    
    💡 Again, we found other easy solution: AMS1117 -> 3.3V Regulator. *Surprised? I guess not.*
    
@@ -76,10 +77,34 @@ Let's split the propposed scheme by parts.
    Try your own research and tests! 
 
 ### 3. MOSFET Control 💡
-
+   Next step will be design a power control stage.  
+   I'll choose MOSFET to that porppose to use a simple but effective PWM strategy.
+   MOSFET allow us to isolate between ESP32 Outputs (3.3V) and LED power nedeed (12V).  
+   Moreover, we can use SMD componets in order to reduce dimensions.
+   
 ### 4. Aditional Sensors 🎯 
+   Thinking a little further, there are some aditional functions we have on mind.  
+   > We want some data from real world and we need to connect sensors to get that
 
-### 4. Routing 🧩
+   Let's prepare the ground for these future situations adding some pins to connect more sensor like:
+   - LDR Sensor: Getting current lux will give us the opportunity to decided how many brightness will be neccesary in real time
+   - PIR Sensor: In some situations would be interesting use motion to turn on a light in passageways
+
+   We have to route that signals to input pins on ESP32, also supply sensor to 5V typically. 
+   Now we have plug & play functions.  
+   We can enable and disable that functions via app.  
+
+### 4. Trial & Error 🧩
+   Time to test. 
+   We can use multiple software tool in order to simulate our schema. It´s much better check by parts instead the all schema.
+   Before get all SMD componets, would be easier searching equivalent surface-mounted componets.
+   > Use surface-mounted component reduce time and save money!
+   We'll use a PCB board to test our prototype.
+
+### 6. Routing and build 🚀
+   Last step after check functionality diagram!
+   I'll use easyEDA again to route tracks.
+   > Here we are another world.. I recomend you research best practise routing in order to get good results.
 
 ## Tools Used
 - EasyEDA for design
