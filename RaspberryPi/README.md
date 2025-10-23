@@ -188,9 +188,9 @@ if (topic === topicDisconnected){
 We arrive here if topic isn`t "connected" and "disconnected".   
 For example, when a light type device have an action over mqtt we´ll receive "Devices/Lights/*action*".  
 I thought 3 posible actions:
-- state: "trigger" toggle the light state (On/Off)
-- brightness: str number value
-- rgb: hex rgb code
+- **state**: "trigger" toggle the light state (On/Off)
+- **brightness**: str number value
+- **rgb**: hex rgb code
 
 Each action will update database consistenly:
 ```js

@@ -130,9 +130,9 @@ We can do the same for a "Devices/disconnected" topic.
 For a light device, we might have a main active topic: "Devices/Lights/device_id".   
 Our device will listen here!  
 We could also define sub-topics, each handled differently:
-- */state -> expects the string "trigger" to toggle the state (On/Off)
-- */brightness -> expects a string between "0" and "100"
-- */rgb -> expects a string with a hex RGB code 
+- ***/state** -> expects the string "trigger" to toggle the state (On/Off)
+- ***/brightness** -> expects a string between "0" and "100"
+- ***/rgb** -> expects a string with a hex RGB code 
 
 > ⚠️ Only string messages can be sent, but possibilities are endless.
 
