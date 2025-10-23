@@ -1,15 +1,5 @@
-# DTech-Hardware
-A compact PCB designed for IoT / Home automation applications
-
-## Scope
-This repository belongs to a serie called **DTech** (Domotic Tech) which breaks down a complete home automation project into three stages: Hardware, Microcontroller and App.
-
-The sole objective of this serie is the satisfaction of transforming creative ideas into functional prototypes through problem-solving and self-learning.
-I'm not any expert to give you unquestionable advice, I can only share my experience along the way.
-> ✨ If you are passionate about this idea like I am, feel free to use this project as a reference to improve it and carry out your own creations!
-
-It's convenience start with **DTech-ESP32** in order to test our PCB with neccesary ~magic~ logic.  
-ESP32 microcontroller allow control lights (RGB or not) connecting with MQTT service.
+# DTech - Hardware
+Steps to build a compact PCB designed for IoT / Home automation applications.  
 
 Here, we must design and build a PCB board capable of controlling an RGB light and some other frills.  
 This little board have requiered dimentions to fix inside a led bulb with E27 socket.
