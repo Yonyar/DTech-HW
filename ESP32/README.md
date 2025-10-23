@@ -2,8 +2,8 @@
 Let's program our microcontroller using [PlatformIO](https://platformio.org/).  
 In my case, I work using the PlatformIO extension on [VS Code](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
-You have the complete program in this repository and we´ll deeper into some points.
-> Check links above to prepare your favorite workspace.  
+You have the complete program in this repository, and we´ll delve deeper into some points.
+> 🧭 Check links above to prepare your favorite workspace.  
 
 ## Interesting points
 - **Enable Arduino OTA (On The Air)** 
@@ -13,11 +13,11 @@ You have the complete program in this repository and we´ll deeper into some poi
 
 ### Arduino OTA
 We are developing software, but it has a strong dependency on hardware.  
-> For now, in order to load program changes into ESP32, it's neccesary plug our PC in phisical board!
+> 💻 For now, in order to load program changes into ESP32, it's necessary to plug our PC into a physical board!
 
 Of course, we don't want to search for our PCB board from wherever we decided to hide it every time we need to change some code.  
-Luckly, use this library is easy and quick [Arduino OTA](https://github.com/arduino-libraries/Arduino_ESP32_OTA)
-> Check your controller to get a compatible library.
+Luckly, using this library is easy and quick [Arduino OTA](https://github.com/arduino-libraries/Arduino_ESP32_OTA)
+> 🧾 Check your controller to get a compatible library.
 
 Code Example:
 ```cpp
@@ -57,25 +57,25 @@ Code Example:
 ```
 
 ### WifiManager
-We can thing big...
-> What happends if we carry our devices to other side, or we change our WiFi company or credentials at home?
+We can think big...
+> 🔍 What happens if we carry our devices to other place, or we change our WiFi company or credentials at home?
 
 Ups... We'd not have access to OTA.  
 But we refuse to get our hardware again.
-> Remember, PCB board probaly was into a bulb!  
+> 💡 Remember, PCB board probably was in a bulb!  
 
 To solve that we can appeal to [WifiManager Library](https://github.com/tzapu/WiFiManager).
 
-Now first time our ESP32 boot, it will create its own network. We can connect to that network and add credentials if we didn't add before or we need to change it.
+Now first time our ESP32 boot, it will create its own network. We can connect to that network and add credentials if we didn't add them before, or we need to change it.
 
 Thanks to our colleagues doing the hard work, we can still do more.  
-Let's add one more fields as MQTT IP (It will be needed later) and customize the appearance! 
+Let's add one more field as MQTT IP (It will be needed later) and customize the appearance! 
 Move deeper, inside .pio's installed libraries
 
 #### Change network name
 I decided to name my devices as: "DTech_" + **MAC**
 
-So, we can edit this part on **WiFiManager.cpp**:
+So, we can edit this part in **WiFiManager.cpp**:
 ```cpp
 boolean WiFiManager::startConfigPortal() {  
   uint64_t EfuseMac = ESP_getChipId();
@@ -85,7 +85,7 @@ boolean WiFiManager::startConfigPortal() {
 }
 ```
 
-Remember add in autoConnect function in order to find the correct ssid:
+Remember to the same logic to autoConnect function to find the correct SSID:
 ```cpp
 boolean WiFiManager::autoConnect() {
   uint64_t EfuseMac = ESP_getChipId();
@@ -95,18 +95,17 @@ boolean WiFiManager::autoConnect() {
 }   
 ```
 
-#### Add your logo
-We can change the page as HTML code on WiFiManager.h.  
-In this line you'll be able to modify a background logo!   
-```c
-const char HTTP_STYLE[] PROGMEM
+#### Add your Logo
+We can modify the page's HTML code inside **WiFiManager.h**.  
+In this line, you'll be able to change the background by a logo!   
+```cpp
+const char HTTP_STYLE[] PROGMEM  = ""
 ```
-I create my logo and then convert it to base64 encoded data:
-
+I found my logo and used it as **base64-encoded data**:
 ![Logo](img/DTech_img.png)  
 
-#### Add MQTT field
-Let's back to your main program and define the new variable to use. Then, call the method that fix to your proppose:
+#### Add an MQTT field
+Let's go back to your main program and define a new variable. Then, call the method that fits your purpose:
 ```cpp 
 char mqtt_server[40];
 WiFiManagerParameter custom_mqtt_server("server", "mqtt server", mqtt_server, 40);
@@ -115,34 +114,37 @@ WiFiManager wifiManager;
 wifiManager.setSaveConfigCallback(saveConfigCallback);
 wifiManager.addParameter(&custom_mqtt_server);
 ```
-> mqtt_server will contain our broker IP to use MQTT protocol
+> mqtt_server will contain your broker's IP address for using MQTT protocol
 
 ### PubSubClient
-With this library it's really easy to use MQTT.
-We can publish messages to different *topics* and also subscribe them, which allow us to "listen" only messages important for our device.
+It's really easy to use MQTT with this library.  
+We can publish messages to different *topics* and also subscribe to them, which allows us to "listen" only messages relevant to our device.
 
-How do I imagine this:   
-We have several devices (PCBs with an ESP32 each one) and every device have different roles: lights, switches, blinds...*Every kind of device will have different programs, of course*.
-When a new device is connected, it send a message with its *name&device_type* into a topic called "Devices/connected" -> Server will be listen this topic to do something like notice our app and add the device into  
-Same way to register "Devices/disconnected"  
+Here's how I imagine it:   
+We have several devices (PCBs with an ESP32 each), and every device has a specific role -- lights, switches, blinds, etc. 
+> *Each type of device will, of course, have its own program*.
+When a new device connects, it sends a message with its *name&device_type* to a topic called "Devices/connected".  
+Server listens to this topic to perform actions like notifiying the app and adding the device.  
+We can do the same for a "Devices/disconnected" topic.
 
-For a light device connected we could have an active main topic: "Devices/Lights/device_id". Our device will be listen here!  
-But we could have more sub-topics inside and each sub-topic will be manage on a different way.  :
-- */OnOff -> is expected to receive the string "on" or "off"
-- */Brightness -> is expected to receive a string between "0" and "100"
-- */RGB -> is expected to receive a string with an hex rgb code 
+For a light device, we might have a main active topic: "Devices/Lights/device_id".   
+Our device will listen here!  
+We could also define sub-topics, each handled differently:
+- */OnOff -> expects the strings "on" or "off"
+- */Brightness -> expects a string between "0" and "100"
+- */RGB -> expects a string with a hex RGB code 
 
-> Only it's posible send string messages. However, options has no end.
+> ⚠️ Only string messages can be sent, but possibilities are endless.
 
 
-Let's implement. Call the server on your setup:
-> Remember we use a custom variable from WifiManager
+Let's implement it. Call the server in your setup():
+> 🧠 Remember we're using a custom variable from WifiManager.
 
 ```cpp
 client.setServer(mqtt_server, 1883);
 ```
 
-Then ajust your callback function:
+Then, adjust your callback function:
 ```cpp
 void callback(char* topic, byte* payload, unsigned int length) {
   payload[length] = '\0';
@@ -161,8 +163,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
 ```
 
 ### Solve Conecction Issues
-Automatic connection after reboot the device and also other attemps if connection fail.
-> We need to stay always connected! It's important to think about ways to avoid network issues.  
+We want the device to reconnect automatically after reboot or if the connection fails.   
+> 🔗 It’s important to always stay connected — think about strategies to avoid network interruptions.   
 
 ```cpp
 void reconnect() {
