@@ -1,9 +1,9 @@
 # DTech - Home Automation Prototype
 This repository breaks down a complete home automation project into three stages: Hardware, Microcontroller and App.
 
-- [Hardware](): Steps to build a compact PCB designed for IoT / Home automation applications
-- [ESP32](): ESP32 Microcontroller programing using MQTT protocol
-- [App (PWA)](): Progressive web applications to interacts with hardware side
+- [Hardware](https://github.com/Yonyar/DTech-HW/tree/main/Hardware): Steps to build a compact PCB designed for IoT / Home automation applications
+- [ESP32](https://github.com/Yonyar/DTech-HW/tree/main/ESP32): ESP32 Microcontroller programing using MQTT protocol
+- [App (PWA)](https://github.com/Yonyar/DTech-HW/tree/main/App): Progressive web applications to interacts with hardware side
 
 ## Scope
 The sole objective of this serie is the satisfaction of transforming creative ideas into functional prototypes through problem-solving and self-learning.  
