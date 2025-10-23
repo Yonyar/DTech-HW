@@ -103,7 +103,7 @@ const char HTTP_STYLE[] PROGMEM
 ```
 I create my logo and then convert it to base64 encoded data:
 
-** [IMG]()
+![Logo](img/DTech_img.png)  
 
 #### Add MQTT field
 Let's back to your main program and define the new variable to use. Then, call the method that fix to your proppose:
