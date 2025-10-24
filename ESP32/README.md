@@ -162,7 +162,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 ```
 
-### Solve Conecction Issues
+### Solve Connection Issues
 We want the device to reconnect automatically after reboot or if the connection fails.   
 > 🔗 It’s important to always stay connected — think about strategies to avoid network interruptions.   
 
