@@ -1,0 +1,20 @@
+# Use Node 12.11 (LTS compatible with Angular 10)
+FROM node:12.11
+
+# Set the working directory inside the container
+WORKDIR src/app
+
+# Copy package.json and package-lock.json first (for efficient caching)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install -g @angular/cli@10 && npm install
+
+# Copy the rest of the project files
+COPY . .
+
+# Expose Angular’s default port
+EXPOSE 4200
+
+# Run the Angular dev server (use 0.0.0.0 so it’s accessible outside container)
+CMD ["ng", "serve", "--host", "0.0.0.0"]
