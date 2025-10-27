@@ -29,13 +29,7 @@ const firebase = require("firebase/app");
 require("firebase/database");
 
 const firebaseConfig = {
-    apiKey: process.env.API_KEY,
-    authDomain: process.env.AUTH_DOMAIN,
-    databaseURL: process.env.URL,
-    projectId: process.env.PROJECT_ID,
-    storageBucket: process.env.STORAGE,
-    messagingSenderId: process.env.MSG_ID,
-    appId: process.env.APP_ID
+    ***
 };
 
 !firebase.apps.length
