@@ -1,0 +1,51 @@
+<mat-card class="login-card">
+  
+  <mat-card-title>
+    <img id="login-icon" src={{AccessIcon}} alt="Access Icon"/>
+  </mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="user" (ngSubmit)="login()">
+      <mat-form-field class="card-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email">
+        <mat-error *ngIf="user.get('email').hasError('email') && !user.get('email').hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="user.get('email').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <button type="button" mat-button *ngIf="user.get('email').value" matSuffix mat-icon-button aria-label="Clear" (click)="user.get('email').setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="card-field">
+        <mat-label>Password</mat-label>
+        <input matInput #password maxlength="24" formControlName="password" [type]="hide ? 'password' : 'text'">
+        <button type="reset" mat-icon-button matSuffix (click)="toggleHidePass($event)" [attr.aria-label]="'Hide/Show password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="user.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-hint align="end">{{password.value.length}} / 24</mat-hint>
+      </mat-form-field>
+  
+      <mat-card-actions>
+        <div>
+          <button type="button" mat-raised-button color="accent" routerLink="register">Go to Sign Up</button>
+          <button type="submit" [disabled]="!user.valid" mat-raised-button color="primary">Login</button>
+          <mat-spinner *ngIf="loading" class="login-spinner" diameter="20"></mat-spinner>
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+  
+  <mat-card-footer>
+    <mat-card-subtitle>Or Sign Up using</mat-card-subtitle>
+    <button id="google-signin" mat-button aria-label="Google plus sign in">
+      <img src={{GooglePlusImage}} alt="google-plus"/>
+    </button>
+  </mat-card-footer>
+</mat-card>

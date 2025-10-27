@@ -1,0 +1,11 @@
+<div class="light-item">
+    <label for="id" class="light-item-name">{{name}}</label> <br>
+    <label for="id" class="light-item-room">{{room}}</label> <br>
+    <mat-icon class="icon_conn" *ngIf="!conn">wifi_off</mat-icon>
+    <mat-icon aria-hidden="false" class="unlinked"
+        [id]="id"
+        aria-label="Light icon" 
+        (click)="assignLightToCurrentSwitch(id.toString())"
+        style="font-size: 3rem; margin-right: 1.5rem;">emoji_objects</mat-icon>
+</div>
+

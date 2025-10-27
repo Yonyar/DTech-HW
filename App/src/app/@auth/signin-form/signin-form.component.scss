@@ -1,0 +1,35 @@
+img {
+    max-width: 100%;
+    height: auto;
+  }
+
+.login-card {
+    background-color: rgba(255, 255, 255, 0.4);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 250px;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    top: 10%;
+}
+
+.card-field{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#google-signin {
+    margin-bottom: 10px;
+}
+
+#login-icon {
+    display: block;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-spinner {
+    display: inline;
+}

@@ -1,0 +1,57 @@
+<mat-card class="signup-card">
+    <mat-card-header>
+      <img id="signup-icon" src={{AccessIcon}} alt="Access Icon">
+    </mat-card-header>
+    <mat-card-content>
+      <form class="sign-up-form">
+        <mat-form-field class="signup-firstname">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text">
+        </mat-form-field>
+
+        <mat-form-field class="signup-secondname">
+          <mat-label>Second Name</mat-label>
+          <input matInput type="text">
+        </mat-form-field>
+
+        <mat-form-field class="signup-email">
+          <mat-label>Email | Username</mat-label>
+          <input matInput type="text">
+          <mat-error *ngIf="userFormControl.hasError('email') && !userFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="userFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <button mat-button *ngIf="user" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+  
+        <mat-form-field class="signup-password">
+          <mat-label>Password</mat-label>
+          <input matInput #password maxlength="24">
+          <mat-hint align="end">{{password.value.length}} / 24</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="signup-repeated-password">
+          <mat-label>Repeat your password</mat-label>
+          <input matInput #password maxlength="24">
+          <mat-hint align="end">{{password.value.length}} / 24</mat-hint>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="signup-actions">
+        <button mat-raised-button color="primary" routerLink="login">Go to Login</button>
+        <button mat-raised-button color="accent">Sign Up</button>
+      </div>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-card-subtitle>Or Sign Up using</mat-card-subtitle>
+      <button id="google-signin" mat-button aria-label="Google plus sign in">
+        <img src={{GooglePlusImage}} alt="google-plus"/>
+      </button>
+    </mat-card-footer>
+  </mat-card>
+  

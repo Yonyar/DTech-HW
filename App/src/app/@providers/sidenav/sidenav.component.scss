@@ -1,0 +1,90 @@
+.nav-icon {
+    margin: 0;
+    width: 30px;
+    cursor: pointer;
+    margin-bottom: 5%;
+}
+
+.nav-icon:after,
+.nav-icon:before,
+.nav-icon div {
+    background-color: rgb(17, 15, 15);
+    border-radius: 3px;
+    content: "";
+    display: block;
+    height: 2px;
+    margin: 7px 0;
+    transition: all 0.2s ease-in-out;
+}
+
+/*Note: If you changed width of lines of head of arrow, then you also might have to set the transformation of those line accordingly*/
+.nav-icon.closed:before {
+    transform: translateY(3px) translateX(-2px) rotate(135deg);
+    width: 17px;
+}
+
+.nav-icon.closed:after {
+    transform: translateY(-3px) translateX(-2px) rotate(-135deg);
+    width: 17px;
+}
+
+.sidenav-container {
+    background-color: rgba(255, 255, 255, 0);
+    height: 100%;
+    user-select: none;
+}
+
+.sidenav {
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+    backdrop-filter: blur(1.5px);
+    margin-top: 3%;
+    height: 90%;
+}
+
+.sidenav-content, .mat {
+    text-align: center;
+    position: relative;
+    height: 92%;
+    width: 100%;
+    overflow-x: hidden;
+    left: -2%;
+}
+
+.blured{
+    -webkit-filter: blur(0.5px) grayscale(1);
+    -moz-filter: blur(0.5px) grayscale(1);
+    -o-filter: blur(0.5px) grayscale(1);
+    -ms-filter: blur(0.5px) grayscale(1);
+    filter: blur(0.5px) grayscale(1);
+    pointer-events: none;
+    position: relative;
+}
+
+.btnSidenav {
+    width: 115px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#exitButton{
+    position: absolute;
+    bottom: 20px;
+  }
+
+#logoIcon {
+    width: 130px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+#posBottom {
+    position: absolute;
+    bottom: 20px;
+}

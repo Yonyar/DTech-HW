@@ -1,0 +1,30 @@
+.garage_card {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 75%;
+    height: 120px;
+    background-color: rgba($color: #ffffff, $alpha: 0.9);
+}
+
+.cardHeader {
+    margin-bottom: 10px;
+}
+
+.icon_conn {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: #ff000085;
+    font-size: 30px;
+}
+
+.icon_edit {
+    font-size: 80px;
+    right: -30px;
+    top: 32px;
+    transform: scaleX(-1) rotate(290deg);
+    position: absolute;
+    z-index: 1;
+}
+

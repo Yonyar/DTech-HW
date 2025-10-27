@@ -1,0 +1,43 @@
+<div style="position: relative;">
+  <p style="position: absolute; right: -15px; top: -20px; font-size: 11px;">ID: {{data.light.id}}</p>
+  <p *ngIf="!data.light.data.options.connected" style="position: absolute; left: -20px; top: -20px; color: brown;">- Disconnected -</p>
+  <h1 mat-dialog-title>Light Edition Panel</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="dialogData">
+      <div>
+        <p style="display: inline; margin-right: 10px;">Name:</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Now: <b>{{data.light.name}}</b></mat-label>
+          <input matInput placeholder="New name" maxlength="20" type="text" formControlName="name">
+        </mat-form-field>
+      </div>
+      <div>
+      <p style="display: inline; margin-right: 10px;">Room:</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Now: <b>{{data.light.room}}</b></mat-label>
+        <mat-select formControlName="room">
+          <mat-option disabled style="text-align: center; color: cornflowerblue; border: 3px dashed rgb(100 149 237 / 0.25);" value="None" (click)="openRoomDialog()"><b>Config Rooms</b></mat-option>
+          <mat-option *ngFor="let room of data.rooms" [value]="room">{{room}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+      <div>
+        <label>Transit Area: </label>
+        <mat-radio-group formControlName="transit">
+          <mat-radio-button [checked]="data.light.data.options.transit" style="margin: 10px 12px;" value="true">Yes</mat-radio-button>
+          <mat-radio-button [checked]="!data.light.data.options.transit" style="margin: 10px 12px;" value="false">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </form>
+  </div>
+  <br>
+  <hr style="width: 205px; border: 3px solid rgba(165, 42, 42, 0.6); border-radius: 5px;">
+  <p style="display: inline; color: brown;">Remove from system: </p>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true" (click)="delete()" cdkFocusInitial>Delete Light</button>
+  <br>
+  <br>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Go back</button>
+    <button mat-raised-button color="accent" [disabled]='checkValid()' style="left: 90px;" [mat-dialog-close]="true" (click)="modifyData()" cdkFocusInitial>Modify</button>
+  </div>
+</div>

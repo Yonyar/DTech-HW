@@ -1,0 +1,27 @@
+<mat-card id="lights-container" class="lights-container">
+    <mat-card-header class="light-container-header" style="justify-content: center; margin-top: 0.5rem;">
+        <mat-card-title>
+            <p><span matBadge={{lights.length}} matBadgeOverlap="false">Lights List</span></p>
+        </mat-card-title>
+        <mat-card-subtitle>Assign lights to this switch</mat-card-subtitle>
+    </mat-card-header> <hr style="margin-top: -0.5rem;">
+
+    <mat-card-content class="lights-content">
+        <mat-spinner diameter="60" *ngIf="loading" class="spinner-devices-lightContainer"></mat-spinner>
+        <mat-grid-list cols="3"
+        rowHeight="100px" 
+        gutterSize="0px">
+          <mat-grid-tile style="width: 6rem;" *ngFor="let light of lights">
+            <dtech-light-item [id]="light.id"
+                [name]="light.name"
+                [room]="light.room"
+                [conn]="light.data.options.connected">
+            </dtech-light-item>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+
+    <mat-card-actions style="position: absolute; top: 100%; left: 50%; transform: translate(-43%, -50%);">
+        <button mat-flat-button color="primary">Show Connections</button>
+    </mat-card-actions>
+</mat-card>

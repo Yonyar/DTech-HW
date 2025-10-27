@@ -1,0 +1,43 @@
+<div id="nav-icon" class="nav-icon" (click)="toggleMenu()">
+    <div></div>
+</div>
+<mat-drawer-container id="container" class="sidenav-container" [hasBackdrop]="false" autosize> 
+    <mat-drawer #drawer class="sidenav" mode="over">
+        <img id="logoIcon" src={{LogoIcon}} alt="Sidenav Logo icon">
+        <button class="btnSidenav" mat-raised-button color="primary" routerLink="home">
+            <mat-icon aria-hidden="false" aria-label="Sidenav icon">home</mat-icon>
+            Home
+        </button> <br>
+        <!-- 
+        <button class="btnSidenav" mat-raised-button color="basic" routerLink="devices">
+            <mat-icon aria-hidden="false" aria-label="Sidenav icon">phonelink_setup</mat-icon>
+            Devices
+        </button> <br>
+        -->
+        <button class="btnSidenav" mat-raised-button color="basic" routerLink="lights">
+            <mat-icon aria-hidden="false" aria-label="Sidenav icon">batch_prediction</mat-icon>
+            Lights
+        </button> <br>
+        <button class="btnSidenav" mat-raised-button color="basic" routerLink="switches">
+            <mat-icon aria-hidden="false" aria-label="Sidenav icon">call_split</mat-icon>
+            Switches
+        </button> <br>
+        <!--
+        <button class="btnSidenav" mat-raised-button color="basic" routerLink="blinds">
+            <mat-icon aria-hidden="false" aria-label="Sidenav icon">brightness_4</mat-icon>
+            Blinds
+        </button> <br>
+        -->
+        <button class="btnSidenav" mat-raised-button color="basic" routerLink="garage">
+            <mat-icon aria-hidden="false" aria-label="Sidenav icon">directions_car</mat-icon>
+            Garage
+        </button> <br> <br>
+        <button id="exitButton" class="btnSidenav" mat-flat-button (click)="openDialogLogout()" color="accent">
+            <mat-icon aria-hidden="false" aria-label="Sidenav icon" style="transform: scaleX(-1);">exit_to_app</mat-icon>
+            Sign Out
+        </button>
+    </mat-drawer>
+    <div [ngClass]="{'blured' : blured}" id="content" class="sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

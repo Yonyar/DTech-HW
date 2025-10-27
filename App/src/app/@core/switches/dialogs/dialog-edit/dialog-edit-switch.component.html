@@ -1,0 +1,41 @@
+<div style="position: relative;">
+  <p style="position: absolute; right: -15px; top: -20px; font-size: 11px;">ID: {{currentSwitch.id}}</p>
+  <p *ngIf="!currentSwitch.conn" style="position: absolute; left: -20px; top: -20px; color: brown;">- Disconnected -</p>
+  <h1 mat-dialog-title>Switch Edition Panel</h1>
+  <br>
+  <div mat-dialog-content>
+    <form [formGroup]="dialogDataSwitch">
+      <div>
+        <p style="display: inline; margin-right: 10px;">Name:</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Now: <b>{{currentSwitch.name}}</b></mat-label>
+          <input matInput maxlength="20" type="text" formControlName="name">
+        </mat-form-field>
+      </div>
+      <!--
+      <div>
+      <p style="display: inline; margin-right: 10px;">Room:</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Now: <b>{{currentSwitch.room}}</b></mat-label>
+        <mat-select matSelect formControlName="room">
+          <mat-option value="Not Assigned">-Not Assigned-</mat-option>
+          <mat-option value="Room 1">Room 1</mat-option>
+          <mat-option value="Room 2">Room 2</mat-option>
+          <mat-option value="Room 3">Room 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      -->
+    </form>
+  </div>
+  <br>
+  <hr style="width: 205px; border: 3px solid rgba(165, 42, 42, 0.6); border-radius: 5px;">
+  <p style="display: inline; color: brown;">Remove from system: </p>
+  <button style="padding: 0 10px; margin: 0 2px;" mat-raised-button color="warn" [mat-dialog-close]="true" (click)="delete()" cdkFocusInitial>Delete Switch</button>
+  <br>
+  <br>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Go back</button>
+    <button mat-raised-button color="accent" [disabled]='checkValid()' style="left: 90px;" [mat-dialog-close]="true" (click)="modifyData()" cdkFocusInitial>Modify</button>
+  </div>
+</div>

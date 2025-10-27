@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Logout</h1>
+<div mat-dialog-content>You are going to close your sesion</div>
+<br>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" mat-dialog-close>Go back</button>
+  <div class="logoutButton">
+    <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Exit</button>
+  </div>
+</div>

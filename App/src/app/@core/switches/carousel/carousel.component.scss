@@ -1,0 +1,31 @@
+.carousel {
+    position: fixed;
+    bottom: 13vh;
+    width: 100%;
+}
+
+.prev {
+    position: absolute;
+    top: 110%;
+    left: 2%;
+}
+
+.next {
+    position: absolute;
+    top: 110%;
+    left: 86%;
+}
+
+.spinner-devices-switches {
+    color: rgba(24, 70, 196, 0.8);
+    margin: 0 auto;
+    top: 50px;
+}
+
+.icon_toggleEdits {
+    position: relative;
+    z-index: 2;
+    left: 38%;
+    top: -15px;
+}
+

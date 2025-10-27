@@ -1,0 +1,32 @@
+<div style="position: relative;">
+  <p style="position: absolute; right: -15px; top: -20px; font-size: 11px;">ID: {{data.id}}</p>
+  <p *ngIf="!data.conn" style="position: absolute; left: -20px; top: -20px; color: brown;">- Disconnected -</p>
+  <h1 mat-dialog-title>Garage Edition Panel</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="dialogData">
+      <div>
+        <p style="display: inline; margin-right: 10px;">Name:</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Now: <b>{{data.name}}</b></mat-label>
+          <input matInput maxlength="20" type="text" formControlName="name">
+        </mat-form-field>
+      </div>
+      <div style="text-align: center;">
+        <p style="display: inline; margin-right: 10px;">Set current location</p>
+        <button id="getLocation" mat-icon-button color="accent" (click)="getLocation()">
+          <mat-icon style="font-size: 38px;">explore</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div> 
+  <br>
+  <hr style="width: 205px; border: 3px solid rgba(165, 42, 42, 0.6); border-radius: 5px;">
+  <p style="display: inline; color: brown;">Remove from system: </p>
+  <button style="padding: 0 10px;" mat-raised-button color="warn" [mat-dialog-close]="true" (click)="delete()" cdkFocusInitial>Delete Garage</button>
+  <br>
+  <br>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Go back</button>
+    <button mat-raised-button color="accent" [disabled]='checkValid()' style="left: 90px;" [mat-dialog-close]="true" (click)="modifyData()" cdkFocusInitial>Modify</button>
+  </div>
+</div>

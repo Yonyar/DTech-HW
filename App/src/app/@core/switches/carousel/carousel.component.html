@@ -1,0 +1,40 @@
+<dtech-lights-container [currentSwitch]="selectedElement">
+</dtech-lights-container>
+
+<div id="icon-toggleEdits" class="icon_toggleEdits">
+    <button mat-mini-fab color="primary" (click)="toggleEdits()" [disabled]="emptySwitches()">
+        <mat-icon color="{{showEdits?'warn':''}}">{{showEdits?"cancel":"build"}}</mat-icon>
+    </button>
+</div>
+
+<div id="carousel" class="carousel">
+
+    <span style="color: brown; font-size: 20px;" *ngIf="!loading && emptySwitches()">Any Switch Connected!</span>
+    <mat-spinner diameter="50" *ngIf="loading" class="spinner-devices-switches"></mat-spinner>
+    
+    <div class="carousel-content">
+        <dtech-carousel-item *ngFor="let switch of switches"
+            [id]="switch.id" 
+            [name]="switch.name" 
+            [room]="switch.room"
+            [conn]="switch.data.options.connected"
+            [lightLinks]="mapLinks(switch)"
+            [showEdits]="showEdits">
+        </dtech-carousel-item>
+    </div>
+
+    <button id="prev" class="control prev"
+        mat-mini-fab color="primary"
+        aria-label="Back button"
+        (click)="goPrev()"
+        [disabled]="disablePrev">
+        <mat-icon aria-hidden="false" aria-label="Back icon">navigate_before</mat-icon>
+    </button>
+    <button id="next" class="control next"
+        mat-mini-fab color="primary"
+        aria-label="Next button"
+        (click)="goNext()"
+        [disabled]="disableNext">
+        <mat-icon aria-hidden="false" aria-label="Next icon">navigate_next</mat-icon>
+    </button>
+</div>

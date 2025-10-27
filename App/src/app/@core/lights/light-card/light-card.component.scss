@@ -1,0 +1,102 @@
+.light_btn {
+    display: inline-block;
+    z-index: 1;
+}
+
+.icon_btn {
+    font-size: 36px;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+}
+
+.light_card {
+    margin-top: 2%;
+    width: 85%;
+    display: inline-block;
+    background-color: rgba($color: #ffffff, $alpha: 0.9);
+}
+
+.light_card-header {
+    height: 48px;
+}
+
+.description_txt {
+    position: absolute;
+    right: 30px;
+}
+
+.brightness_slider {
+    width: 80%;
+}
+
+.color_circle {
+    margin-left: 1.5rem;
+    margin-top: 12px;
+}
+
+.moreColor {
+    display: contents;
+}
+
+.add-color-btn {
+    margin-right: 10px;
+}
+
+.spinner-devices-light {
+    color: rgba(24, 70, 196, 0.8);
+    margin: 0 auto;
+    margin-top: 50%;
+}
+
+@keyframes deleteColorOpacity {
+    0% {border-color: hsla(0, 100%, 50%, 0.3);}
+    25% {border-color: hsla(0, 100%, 50%, 0.7);}
+    50% {border-color: hsla(0, 100%, 50%, 0.7);}
+    100% {border-color: hsla(0, 100%, 50%, 0.3);}
+}
+
+.chipRemoveClass {
+    position: absolute;
+    opacity: 0.8;
+    border-radius: 25px;
+    border: 2px dashed hsla(0, 100%, 50%, 0.3);
+    animation-name: deleteColorOpacity;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 2s;
+    left: 10px;
+}
+
+.resetColorText {
+    position: relative;
+    display: inline;
+    top: -12px;
+}
+
+.icon_conn {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: #ff000085;
+}
+
+.icon_edit {
+    font-size: 58px;
+    right: -15px;
+    top: 15px;
+    transform: scaleX(-1) rotate(290deg);
+    position: absolute;
+    z-index: 1;
+}
+
+.icon_toggleEdits {
+    position: fixed;
+    z-index: 2;
+    bottom: 20px;
+    right: 20px;
+}
+
+.hide {
+    visibility: hidden;
+}

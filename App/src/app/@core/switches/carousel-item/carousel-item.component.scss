@@ -1,0 +1,36 @@
+.carousel-item {
+    width: 80px;
+    margin: 0;
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    border-radius: 20px;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item-name {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 1.2px 1.2px rgba(37, 37, 37, 0.295);
+}
+
+.icon_conn {
+    position: absolute;
+    top: 45px;
+    left: 35px;
+    color: #ff000085;
+}
+
+.icon_edit {
+    position: fixed;
+    z-index: 2;
+    bottom: 110px;
+    left: 0px;
+    font-size: 70px;
+}

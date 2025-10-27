@@ -1,0 +1,10 @@
+<div [id]="id" class="carousel-item">
+    <mat-icon class="icon_conn" *ngIf="!conn">wifi_off</mat-icon>
+    <mat-icon class="icon_edit" mat-icon-button color="accent" *ngIf="showEdits" (click)="openDialogEdit(id,name,room,conn)">edit_location</mat-icon>
+    <span class="carousel-item-name" style="font-weight: 700;">{{name}}</span> <br>
+    <span class="carousel-item-name" style="font-style: italic;">{{room}}</span>
+    <img src="../../../../assets/icons/switch.png" 
+        alt="Switch"
+        style="margin-top: 1rem; margin-bottom: 1rem;"
+        class="iconSwitch">
+</div>

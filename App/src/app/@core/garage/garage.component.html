@@ -1,0 +1,12 @@
+<dtech-garage-card *ngFor="let garage of garages"
+    [id]="garage.id"
+    [name]="garage.name"
+    [conn]="garage.data.options.connected"
+    [showEdits]="showEdits">
+</dtech-garage-card>
+
+<div id="icon-toggleEdits" class="icon_toggleEdits">
+    <button mat-mini-fab color="primary" (click)="toggleEdits()" [disabled]="emptyGarages()">
+        <mat-icon color="{{showEdits?'warn':''}}">{{showEdits?"cancel":"build"}}</mat-icon>
+    </button>
+</div>

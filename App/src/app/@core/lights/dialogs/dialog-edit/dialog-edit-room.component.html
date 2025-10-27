@@ -1,0 +1,30 @@
+<div style="position: relative;">
+  <h1 mat-dialog-title>Room Edition Panel</h1>
+  <br>
+  <div mat-dialog-content style="height: 180px;">
+    <form [formGroup]="dialogData" style="position: relative;">
+      <div style="position: absolute;">
+        <mat-form-field appearance="fill" style="width: 70%;">
+          <mat-label>New room name</mat-label>
+          <input formControlName="room_new" matInput maxlength="20" type="text">
+        </mat-form-field>
+        <button style="left: 150px; top: -63px;" mat-raised-button color="accent" [disabled]='checkValidNew()' [mat-dialog-close]="true" (click)="modifyData()" cdkFocusInitial>Create</button>
+      </div>
+      <hr style="position: absolute; top: 90px; width: 205px; border: 3px solid rgba(165, 42, 42, 0.6); border-radius: 5px;">
+      <div style="position: absolute; top: 30px;">
+        <mat-form-field style="width: 70%; top: 80px;" appearance="fill">
+          <mat-label>Select a room</mat-label>
+          <mat-select formControlName="room_delete">
+            <mat-option *ngFor="let room of list" [value]="room">{{room}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button style="left: 150px; top: 17px;" mat-raised-button color="warn" (click)="delete()" cdkFocusInitial [disabled]='checkValidDelete()' [mat-dialog-close]="true">Delete</button>
+      </div>
+    </form>
+  </div>
+  <br>
+  <br>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Go back</button>
+  </div>
+</div>

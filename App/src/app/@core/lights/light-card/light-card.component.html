@@ -1,0 +1,72 @@
+<div>
+    <mat-spinner diameter="100" *ngIf="loading" class="spinner-devices-light"></mat-spinner>
+    <span style="color: brown; font-size: 20px;" *ngIf="emptyLights()">Any Light Connected!</span>
+    <mat-accordion>
+    <div *ngFor="let light of lights; trackBy: trackById">
+    <mat-expansion-panel [expanded]="light.data.options.expanded" id="{{'panel-' + light.id}}" (closed)="closeExpand(light.id)" (opened)="openExpand(light.id)" class="light_card" [ngStyle]="{'width': showEdits?'60%':'85%'}" [disabled]="!light.data.options.connected || showEdits">
+            <mat-expansion-panel-header [id]="light.id" class="light_card-header">
+                <mat-icon class="icon_edit" color="accent" *ngIf="showEdits" (click)="openDialogEdit(light)">edit_location</mat-icon>
+                <mat-icon class="icon_conn" *ngIf="!light.data.options.connected">wifi_off</mat-icon>
+                <mat-panel-title><strong>{{light.name}}</strong></mat-panel-title>
+                <mat-panel-description class="description_txt" *ngIf="!showEdits">Room: {{light.room}}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <button mat-icon-button class="light_btn">
+                <mat-icon [ngStyle]="{'color': light.data.color}" class="icon_btn" (click)="toggleLight(light.id)" *ngIf="light.data.state">flash_on</mat-icon>
+                <mat-icon class="icon_btn" (click)="toggleLight(light.id)" *ngIf="!light.data.state">flash_off</mat-icon>
+            </button>
+            <mat-slider #slider class="brightness_slider" color="primary"
+                [value]="light.data.brightness"
+                (change)="changeBrightness(light.id, $event.value)" 
+                thumbLabel
+                [displayWith]="formatLabel"
+                tickInterval="101"
+                min="0"
+                max="100"
+                step=5>
+            </mat-slider>
+            <br>
+
+            <div *ngIf="light.data.options.rgb">
+                <div class="color-circle">
+                    <mat-chip-list #chipList aria-label="Color selection">
+                        <mat-chip
+                        *ngFor="let color of light.data.savedColors; trackBy: trackById"
+                        [selectable]=true
+                        (click)="selectColor(light.id, color)">
+                        <mat-icon [ngStyle]="{'color': color}">fiber_manual_record</mat-icon>
+                        <mat-icon (click)="removeColor(light.id, color)" *ngIf="light.data.options.colorRemovable" class="chipRemoveClass">cancel</mat-icon>
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <br>
+                <div *ngIf="light.data.options.colorResetable && light.data.options.colorRemovable" (click)="resetColor(light.id)">
+                    <mat-icon class="icon_btn">autorenew</mat-icon>
+                    <p class="resetColorText">Reset to default colors</p>
+                </div>
+                <mat-expansion-panel (closed)="closeColors(light.id)" class="moreColor">  
+                    <mat-expansion-panel-header>
+                        <mat-panel-description>
+                            More colors...
+                        </mat-panel-description>   
+                    </mat-expansion-panel-header>
+                    <color-hue-picker [color]="light.data.color"
+                        (onChangeComplete)="changeColor(light.id, $event.color.hex)" 
+                        width=auto>
+                    </color-hue-picker>
+                    <br>
+                    <button class="add-color-btn" mat-raised-button color="primary" (click)="addColor(light.id)">Add to favorite</button>
+                    <button mat-raised-button color="warn" (click)="toggleRemoveColor(light.id)">
+                        <mat-icon *ngIf="!light.data.options.colorRemovable">delete</mat-icon>
+                        <mat-icon *ngIf="light.data.options.colorRemovable">delete_forever</mat-icon>
+                    </button>
+                </mat-expansion-panel>
+            </div>
+        </mat-expansion-panel>
+    </div>
+    </mat-accordion>
+    <div id="icon-toggleEdits" class="icon_toggleEdits">
+        <button mat-mini-fab color="primary" (click)="toggleEdits()" [disabled]="emptyLights()">
+            <mat-icon color="{{showEdits?'warn':''}}">{{showEdits?"cancel":"build"}}</mat-icon>
+        </button>
+    </div>
+</div>

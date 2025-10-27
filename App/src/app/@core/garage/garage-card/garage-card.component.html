@@ -1,0 +1,13 @@
+<mat-card class="garage_card" style="margin-bottom: 2rem;">
+  <mat-card-header class="cardHeader">
+    <mat-icon class="icon_conn" *ngIf="!conn">wifi_off</mat-icon>
+    <mat-icon class="icon_edit" color="accent" *ngIf="showEdits" (click)="openDialogEdit()">edit_location</mat-icon>
+    <mat-card-title>{{name}}</mat-card-title>  
+  </mat-card-header>
+  <mat-card-content>
+      <div>Open/Close</div>
+      <button mat-fab color="primary" (click)="toggleGarage(id)" [disabled]="disableTime || !conn">
+          <mat-icon>room_preferences</mat-icon>
+      </button>
+  </mat-card-content>
+</mat-card>
