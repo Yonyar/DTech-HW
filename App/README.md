@@ -35,17 +35,14 @@ Role-based authentication for safe device management.
 
 ### 💠 Interactive Simplicity   
 
-Intuitive, responsive, and interactive design that adapts seamlessly across        Smart and quickly control state and brighness of devices.                        
-devices, offering a smooth, engaging, and user-friendly experience.                For RGB lights it's possible to save favorite colors.                            
-|                                                                                 |                                                                                 |
+|Intuitive and responsive design that adapts seamlessly across devices, offering a smooth, engaging, and user-friendly experience. | For RGB lights it's possible to save favorite colors. Smart and quickly control state and brighness of devices |    
+|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | ![Interactive](/App/src/assets/gif/interactive.gif)                             | ![Light Control](/App/src/assets/gif/lights.gif)                                |
-|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 
-Edit name and room for devices, or remove them.                                    Switches can be easily linked to several lights                                  |
-It's posible to select transit function: use PIR sensor motion if available        Switches are wireless and power by 12V!                                          |
-|                                                                                 |                                                                                 |
-| ![Light Edit](/App/src/assets/gif/edit.gif)                                     | ![Switch Control](/App/src/assets/gif/edit-switch.gif)                          |
+
+|Edit name and room for devices, or remove them. It's posible to select transit function: use PIR sensor motion if available | Switches can be easily linked to several lights. Switches are wireless and power by 12V |
 |---------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| ![Light Edit](/App/src/assets/gif/edit.gif)                                     | ![Switch Control](/App/src/assets/gif/edit-switch.gif)                          |
 
 ### 🔧 Easy Device Management   
 Thanks to logic implementing on [ESP32](https://github.com/jc-delrio/DTech/tree/main/ESP32) and [RaspberryPi server](https://github.com/jc-delrio/DTech/tree/main/RaspberryPi), firebase real-time database can **auto-detect** current state of devices effortlessly.    
